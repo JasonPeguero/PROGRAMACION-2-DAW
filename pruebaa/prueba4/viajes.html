@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALBOR LOGISTICS</title>
+    <link rel="stylesheet" href="/prueba4/css/estilo.css">
+</head>
+<body>
+<header>
+        <div class="container header-content">
+            <h1>ALBOR LOGISTICS</h1>
+            <nav>
+                <a href="/prueba4/empresa.html">Empresa</a>
+                <a href="/prueba4/actividad.html">Actividad</a>
+                <a href="/prueba4/viajes.html">Viajes</a>
+                <a href="/prueba4/contacto.html">Contacto</a>
+            </nav>
+        </div>
+    </header>
+    
+ <section id="viajes">
+            <h2>Últimos Viajes</h2>
+            <button id="btn-viajes" class="btn" style="margin-bottom: 10px;">Resaltar Completados</button>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Origen</th>
+                        <th>Destino</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="fila-viaje" data-estado="completado">
+                        <td>Madrid</td>
+                        <td>Barcelona</td>
+                        <td>Completado</td>
+                    </tr>
+                    <tr class="fila-viaje" data-estado="en-ruta">
+                        <td>Valencia</td>
+                        <td>Sevilla</td>
+                        <td>En ruta</td>
+                    </tr>
+                    <tr class="fila-viaje" data-estado="completado">
+                        <td>Bilbao</td>
+                        <td>Zaragoza</td>
+                        <td>Completado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+</body>
+</html>
