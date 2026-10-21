@@ -30,7 +30,7 @@ $error .= "Todos los campos son obligatorios";
   $mensajeresum .= "Resumen de los datos " . $Empresa . "<br>"; 
   $mensajeresum .= "Resumen de los datos " . $Correo . "<br>";
   $mensajeresum .= "Resumen de los datos " . $Telefono . "<br>";
-
+}
     
 
 if (empty($Nombre)) {

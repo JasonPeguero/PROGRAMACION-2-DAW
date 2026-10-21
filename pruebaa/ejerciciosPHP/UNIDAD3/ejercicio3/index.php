@@ -20,14 +20,14 @@ if (isset($_POST['registrar'])) {
     $errores = validarFormulario($nombre, $correo, $empresa, $asunto, $descripcion, $prioridad, $categoria);
 
     if (empty($errores)) {
-        // TODO: obtener el número secuencial real desde una base de datos.
-        // Por ahora se usa un valor aleatorio, por lo que el ID podría repetirse.
-        $secuencia = random_int(1, 99999);
+        
+        // Obtienen un dato random para la id, SE PUEDE REPEITR. 
+        $secuencia = random_int(1, 100);
 
-        $id    = generarIdIncidencia((int) date('Y'), $secuencia);
-        $fecha = date('d/m/Y H:i');
+        $id    = generarIdIncidencia((int) date('Y'), $secuencia); //genreea la id de la incidencia
+        $fecha = date('d/m/Y H:i'); 
 
-        // TODO: almacenar las incidencias en una base de datos.
+        //guarda las incidencias
 
         $textoIncidencia = mostrarIncidencia(
             $id, $fecha, $nombre, $correo, $empresa, $asunto,
@@ -84,6 +84,8 @@ if (isset($_POST['registrar'])) {
         <label for="Descripcion" class="form-label">Descripción de la incidencia<span>*</span></label>
         <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="<?php echo htmlspecialchars($descripcion); ?>">
     </div>
+
+<!-- Selectores para la prioridad y la categoría -->   
     <div class="mb-3">
         <label for="Prioridad" class="form-label">Prioridad<span>*</span></label>
             <select class="form-select" id="Prioridad" name="Prioridad">
@@ -98,12 +100,12 @@ if (isset($_POST['registrar'])) {
     <div class="mb-3">
         <label for="Categoria" class="form-label">Categoría<span>*</span></label>
             <select class="form-select" id="Categoria" name="Categoria">
-                <option value="">Pendiente</option>
+                <option value="">Seleccione una categoría</option>
                 <?php foreach (CATEGORIAS as $opcion): ?>
                 <option value="<?php echo htmlspecialchars($opcion); ?>" <?php echo $categoria == $opcion ? : ''; ?>>
                 <?php echo htmlspecialchars($opcion); ?>
                 </option>
-                <?php endforeach; ?>
+                <?php endforeach; ?> 
             </select>
     </div>
 
