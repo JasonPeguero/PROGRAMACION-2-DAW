@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Generador de partes de viaje · ALBOR LOGISTICS</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, sans-serif;
+      color: #172b4d;
+      background: #f3f6fa;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem 1rem;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    h1, h2 {
+      color: #123b68;
+    }
+
+    form, #parteGenerado {
+      padding: 1.5rem;
+      border: 1px solid #d5deea;
+      border-radius: 0.6rem;
+      background: #fff;
+      box-shadow: 0 2px 8px #172b4d12;
+    }
+
+    .campos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+    }
+
+    label {
+      display: grid;
+      gap: 0.4rem;
+      font-weight: 700;
+    }
+
+    input, select, button {
+      min-height: 2.6rem;
+      padding: 0.45rem 0.65rem;
+      border: 1px solid #aebdce;
+      border-radius: 0.35rem;
+      font: inherit;
+    }
+
+    button {
+      margin: 1rem 0.5rem 0 0;
+      border: 0;
+      background: #145da0;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button:hover:not(:disabled) {
+      background: #0c477e;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    #parteGenerado {
+      margin-top: 1.5rem;
+      border-top: 5px solid #f0a52b;
+    }
+
+    #resultado p {
+      margin: 0.65rem 0;
+    }
+
+    #mensaje {
+      min-height: 1.5rem;
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Generador de partes de viaje</h1>
+    <p>Introduce los datos del servicio para crear el parte de ALBOR LOGISTICS.</p>
+
+    <form id="formularioViaje">
+      <div class="campos">
+        <label for="codigo">Código del viaje
+          <input id="codigo" name="codigo" type="text" placeholder="VIA-001" required>
+        </label>
+        <label for="matricula">Matrícula
+          <input id="matricula" name="matricula" type="text" placeholder="1234ABC" required>
+        </label>
+        <label for="conductor">Conductor
+          <input id="conductor" name="conductor" type="text" required>
+        </label>
+        <label for="origen">Origen
+          <input id="origen" name="origen" type="text" required>
+        </label>
+        <label for="destino">Destino
+          <input id="destino" name="destino" type="text" required>
+        </label>
+        <label for="distancia">Distancia (km)
+          <input id="distancia" name="distancia" type="number" min="0" step="1" required>
+        </label>
+        <label for="estado">Estado del viaje
+          <select id="estado" name="estado" required>
+            <option value="PENDIENTE">Pendiente</option>
+            <option value="EN RUTA">En ruta</option>
+            <option value="FINALIZADO">Finalizado</option>
+            <option value="INCIDENCIA">Incidencia</option>
+          </select>
+        </label>
+      </div>
+      <button type="submit">Generar parte</button>
+    </form>
+
+    <p id="mensaje" role="status" aria-live="polite"></p>
+
+    <section id="parteGenerado" hidden aria-labelledby="tituloParte">
+      <h2 id="tituloParte">ALBOR LOGISTICS</h2>
+      <p><strong>PARTE DE VIAJE</strong></p>
+      <div id="resultado"></div>
+      <button id="abrirParte" type="button" disabled>Abrir parte en nueva ventana</button>
+    </section>
+  </main>
+
+  <script src="js/parte.js"></script>
+</body>
+</html>
