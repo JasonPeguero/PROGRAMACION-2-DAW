@@ -1,5 +1,31 @@
 <?php
 
+function Categorias(array $productos): array
+{
+    return array_values(array_unique(array_column($productos, 'categoria')));
+}
+
+function filtrarProductos(array $productos, string $nombre, string $categoria, string $precioMax): array
+{
+    $nombre = mb_strtolower($nombre);
+
+    $filtrados = array_filter($productos, static function (array $producto) use ($nombre, $categoria, $precioMax): bool {
+        if ($nombre !== '' && mb_strpos(mb_strtolower($producto['nombre']), $nombre) === false) {
+            return false;
+        }
+        if ($categoria !== '' && $producto['categoria'] !== $categoria) {
+            return false;
+        }
+        if ($precioMax !== '' && $producto['precio'] > (float) $precioMax) {
+            return false;
+        }
+
+        return true;
+    });
+
+    return array_values($filtrados);
+}
+
 function validarFormulario(
     string $Nombre,
     string $Categoría,
@@ -18,7 +44,7 @@ function validarFormulario(
     if ($Precio === '') {
         $errores[] = 'El precio del producto es obligatorio.';
     } else {
-        $Precio = floatval($Precio);
+        $Precio = float($Precio);
         if ($Precio <= 0) {
             $errores[] = 'El precio del producto debe ser un valor positivo.';
         }
@@ -26,7 +52,7 @@ function validarFormulario(
     if ($Stock === '') {
         $errores[] = 'El stock del producto es obligatorio.';
     } else {
-        $Stock = intval($Stock);
+        $Stock = int($Stock);
         if ($Stock < 0) {
             $errores[] = 'El stock del producto debe ser un valor no negativo.';
         }
