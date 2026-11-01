@@ -6,11 +6,15 @@ Aplicación para ALBOR LOGISTICS que genera un parte de viaje a partir de un for
 
 | Archivo | Función |
 |---|---|
-| `generador-parte.html` | Formulario, estructura de la página y zona de resultados. |
-| `js/parte.js` | Genera el parte en el documento, obtiene la fecha con `Date` y crea el documento de la ventana nueva con `window.open()`. |
+| `generador-parte.html` | Formulario y zona de resultados (estilos con Bootstrap 5.3.8 desde CDN). |
+| `js/parte.js` | Genera el parte con el DOM, obtiene la fecha con `Date` y crea la ventana nueva con `window.open()`. |
 
 ## Uso
 
-Abre `generador-parte.html` en el navegador, completa todos los campos y pulsa **Generar parte**. Después, pulsa **Abrir parte en nueva ventana**. Si el navegador bloquea la ventana emergente, permite las ventanas emergentes para esta página.
+Abre `generador-parte.html` en el navegador (hace falta conexión a internet para cargar Bootstrap), completa todos los campos y pulsa **Generar parte**. Después, pulsa **Abrir parte en nueva ventana**. Si el navegador bloquea la ventana emergente, permite las ventanas emergentes para esta página.
 
-Los datos del parte se crean desde JavaScript; no están escritos como contenido de viaje en el HTML. El documento generado utiliza el DOM y los valores se escapan antes de insertarse en el HTML de la nueva ventana.
+## Notas técnicas
+
+- Una sola función (`rellenarParte`) escribe el parte tanto en la página como en la ventana nueva.
+- Los datos se insertan con `textContent`/`createElement`, por lo que no se interpretan como HTML.
+- La validación de campos obligatorios usa los atributos `required` y `min` del formulario.

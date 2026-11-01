@@ -1,6 +1,6 @@
 "use strict";
 
-// Nombres de las cookies utilizadas por esta aplicación.
+// Nombres de las cookies
 const nombresCookies = ["operador", "idioma", "viajes", "panel"];
 
 // Busca una cookie por su nombre y devuelve su valor.

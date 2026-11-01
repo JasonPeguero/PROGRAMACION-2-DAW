@@ -3,7 +3,7 @@
 // Guarda la ventana de seguimiento para poder cargar una dirección en ella.
 let ventanaSeguimiento;
 
-// Muestra un mensaje sencillo en la página.
+// Muestra un mensaje
 function mostrarMensaje(texto) {
   document.getElementById("mensaje").textContent = texto;
 }
@@ -13,7 +13,7 @@ function abrirPanel() {
   window.open("centro-operaciones.html", "panelOperaciones");
 }
 
-// Abre la página de seguimiento y guarda la ventana.
+// Abre la pagina de seguimiento y guarda la ventana.
 function abrirSeguimiento() {
   ventanaSeguimiento = window.open("seguimiento.html", "seguimiento", "width=900,height=600");
 
@@ -27,34 +27,34 @@ function abrirWeb() {
   window.open("https://campus.ilerna.com", "_blank");
 }
 
-// Muestra los datos básicos de la página y el navegador.
+// Muestra los datos de la página y el navegador.
 function mostrarInformacion() {
   document.getElementById("infoURL").textContent = location.href;
   document.getElementById("infoProtocolo").textContent = location.protocol;
   document.getElementById("infoPlataforma").textContent = navigator.userAgent;
 }
 
-// Recarga la página actual.
+// Recarga la pagina actual.
 function recargarPagina() {
   location.reload();
 }
 
-// Vuelve a la página anterior del historial.
+// Vuelve a la pagina anterior del historial.
 function volverAtras() {
   history.back();
 }
 
-// Muestra la dirección actual.
+// Muestra la url actual.
 function mostrarURL() {
   mostrarMensaje("URL actual: " + location.href);
 }
 
-// Carga la dirección escrita en la ventana de seguimiento.
+// Carga la url en la ventana de seguimiento.
 function cargarURL() {
   const direccion = document.getElementById("txtURL").value;
 
   if (!ventanaSeguimiento || ventanaSeguimiento.closed) {
-    mostrarMensaje("Abre la ventana de seguimiento y luego copia la URK");
+    mostrarMensaje("Abre la ventana de seguimiento y luego copia la URL");
     return;
   }
 
@@ -66,7 +66,7 @@ function cargarURL() {
   ventanaSeguimiento.location.href = direccion;
 }
 
-// Conecta cada botón con su función.
+// Conecta cada boton
 mostrarInformacion();
 document.getElementById("btnPanel").addEventListener("click", abrirPanel);
 document.getElementById("btnSeguimiento").addEventListener("click", abrirSeguimiento);
