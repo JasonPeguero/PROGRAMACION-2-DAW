@@ -5,10 +5,11 @@ body {
     font-family: Arial;
 }
 
-header, footer {
+footer {
     background-color: gray;
     padding: 15px;
 }
+
 
 section {
     padding: 10px;

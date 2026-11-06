@@ -5,8 +5,10 @@ body {
     font-family: Arial;
 }
 
-h1, h2 {
-    color: blue;
+
+footer {
+    background-color: gray;
+    padding: 15px;
 }
 
 section {
