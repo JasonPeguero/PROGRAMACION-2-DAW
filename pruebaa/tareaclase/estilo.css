@@ -1,0 +1,42 @@
+
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial;
+}
+
+
+footer {
+    background-color: gray;
+    padding: 15px;
+}
+
+section {
+    padding: 10px;
+}
+
+.aviso {
+    color: red;
+    font-weight: bold;
+}
+
+.tarjeta {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+    background-color: lightgray;
+}
+
+.destacado {
+    font-size: 1.5em;
+    color: blue;
+}
+
+p.avso {
+    color: rgb(21, 255, 0);
+    font-weight: bold;
+}
+
+h1, h2 {
+    font-family:  'Times New Roman', Times, serif, sans-serif;
+}

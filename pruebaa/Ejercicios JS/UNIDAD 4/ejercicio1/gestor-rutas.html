@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ALBOR LOGISTICS - Gestión de rutas</title>
+</head>
+<body>
+  <h1>ALBOR LOGISTICS</h1>
+  <h2>GESTIÓN DE RUTAS</h2>
+
+  <p>Rutas disponibles: <span id="contador"></span></p>
+  <ul id="listadoRutas"></ul>
+
+  <h3>Añadir ruta</h3>
+  <input type="text" id="inputOrigen" placeholder="Origen">
+  <input type="text" id="inputDestino" placeholder="Destino">
+  <button id="btnAñadir">Añadir</button>
+
+  <h3>Eliminar ruta</h3>
+  <input type="number" id="inputEliminar" placeholder="Nº de ruta" min="1">
+  <button id="btnEliminar">Eliminar</button>
+
+  <h3>Buscar ruta</h3>
+  <input type="text" id="inputBuscar" placeholder="Ciudad">
+  <button id="btnBuscar">Buscar</button>
+  <button id="btnTodas">Ver todas</button>
+
+  <p id="mensaje"></p>
+
+  <script src="js/rutas.js"></script>
+</body>
+</html>

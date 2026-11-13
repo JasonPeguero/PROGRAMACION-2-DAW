@@ -1,0 +1,16 @@
+
+body {
+    background-color: black;
+    color: white;
+    font-family: Arial;
+}
+
+footer {
+    background-color: gray;
+    padding: 15px;
+}
+
+
+section {
+    padding: 10px;
+}
