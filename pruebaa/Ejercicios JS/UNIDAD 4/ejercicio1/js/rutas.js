@@ -6,32 +6,43 @@ let rutas = [
     {origen: "Madrid", destino: "Barcelona"}
 ]
 
-
 function listadoRutas() {
     let listado = "";   
     for (let i = 0; i < rutas.length; i++) {
-        listado += rutas[i].origen + " → " + rutas[i].destino + "<br>";
+        listado += rutas[i].origen + " = " + rutas[i].destino + "<br>";
     }
-    return listado;
+    document.getElementById("mostrarRutas").innerHTML = listado;
+
 }
 
-function mostrarRutas() {
-    let mensaje = document.getElementById("mensaje");
-    mensaje.innerHTML = "Rutas disponibles:" + listadoRutas() + "<br> Total de rutas: " + contarRutas(); 
-}
+function buscaRuta(){
+    let origen = document.getElementById("Buscar1").value;
+    let destino = document.getElementById("Buscar2").value;
+    let encontrado = false;
 
-function buscarRutas() {
 
 }
 
 function añadirRuta() {
+    let origen = document.getElementById("origen").value;
+    let destino = document.getElementById("destino").value;
+    let ruta = {origen: origen, destino: destino};
+    rutas.push(ruta);
+    listadoRutas();
+    contarRutas();
 
 }
 
 function eliminarRuta() {
+let origen = document.getElementById("origen").value;
+let destino = document.getElementById("destino").value; 
+
 
 }
 
 function contarRutas() {
-    return rutas.length;
+    document.getElementById("contarRutas").innerHTML = rutas.length;;
 }
+
+listadoRutas();
+contarRutas();
