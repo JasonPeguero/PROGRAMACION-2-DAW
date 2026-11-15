@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "titulo": "No funciona la impresora",
+        "descripcion": "La impresora de la oficina no imprime desde esta mañana.",
+        "cliente": "cliente01",
+        "tecnico": "tecnico01",
+        "prioridad": "Media",
+        "estado": "En proceso",
+        "fecha": "2026-11-02 09:30",
+        "observaciones": ["[2026-11-02 11:00] tecnico01: Revisando los drivers."]
+    },
+    {
+        "id": 2,
+        "titulo": "Sin acceso al correo",
+        "descripcion": "No puedo iniciar sesión en el correo corporativo.",
+        "cliente": "cliente02",
+        "tecnico": "tecnico02",
+        "prioridad": "Alta",
+        "estado": "Pendiente",
+        "fecha": "2026-11-04 16:45",
+        "observaciones": []
+    },
+    {
+        "id": 3,
+        "titulo": "Servidor caído",
+        "descripcion": "La web de la empresa no carga.",
+        "cliente": "cliente01",
+        "tecnico": "",
+        "prioridad": "Crítica",
+        "estado": "Pendiente",
+        "fecha": "2026-11-06 08:10",
+        "observaciones": []
+    }
+]

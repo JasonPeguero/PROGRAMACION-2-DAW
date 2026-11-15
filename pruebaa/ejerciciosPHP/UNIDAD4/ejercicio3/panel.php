@@ -1,48 +1,26 @@
 <?php
-session_start();
-
-// Comprobar si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
-    header("Location: login.php");
-    exit;
-}
+require "funciones.php";
+exigir_login();
 
 $usuario = $_SESSION["usuario"];
 $rol = $_SESSION["rol"];
 
-// Secciones y roles permitidos
-$secciones = [
-    "usuarios"        => ["titulo" => "Usuarios",        "roles" => ["Administrador"],            "texto" => "Gestión de usuarios de la aplicación."],
-    "incidencias"     => ["titulo" => "Incidencias",     "roles" => ["Administrador", "Técnico"], "texto" => "Listado de todas las incidencias."],
-    "configuracion"   => ["titulo" => "Configuración",   "roles" => ["Administrador"],            "texto" => "Ajustes generales de la aplicación."],
-    "clientes"        => ["titulo" => "Clientes",        "roles" => ["Técnico"],                  "texto" => "Listado de clientes atendidos."],
-    "informes"        => ["titulo" => "Informes",        "roles" => ["Administrador", "Técnico"], "texto" => "Informes de actividad del servicio."],
-    "mis-incidencias" => ["titulo" => "Mis incidencias", "roles" => ["Cliente"],                  "texto" => "Incidencias que has abierto."],
-    "mi-perfil"       => ["titulo" => "Mi perfil",       "roles" => ["Cliente"],                  "texto" => "Tus datos de cliente."],
-];
-
-// Muestra el menú de navegación según el rol del usuario
-$menu = [];
-foreach ($secciones as $clave => $seccion) {
-    if (in_array($rol, $seccion["roles"])) {
-        $menu[$clave] = $seccion["titulo"];
+// Cogemos solo las incidencias que este usuario puede ver
+$visibles = [];
+foreach (cargar_incidencias() as $inc) {
+    if (puede_ver($inc)) {
+        $visibles[] = $inc;
     }
 }
 
-// Comprobar si se ha pedido una sección y si el usuario tiene permiso para verla
-$pedida = $_GET["seccion"] ?? null;
-$error = "";
-$seccion = null;
-
-if ($pedida !== null) {
-    if (!isset($secciones[$pedida])) {
-        http_response_code(404);
-        $error = "404 - Sección no encontrada";
-    } elseif (!in_array($rol, $secciones[$pedida]["roles"])) {
-        http_response_code(403);
-        $error = "403 - Acceso no autorizado";
-    } else {
-        $seccion = $secciones[$pedida];
+// Contamos cuántas hay de cada estado
+$contador = [];
+foreach (ESTADOS as $estado) {
+    $contador[$estado] = 0;
+}
+foreach ($visibles as $inc) {
+    if (isset($contador[$inc["estado"]])) {
+        $contador[$inc["estado"]]++;
     }
 }
 ?>
@@ -53,33 +31,68 @@ if ($pedida !== null) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Panel · Soporte Informático</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-  <main class="container my-4" style="max-width: 720px;">
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <span>Usuario: <strong><?= htmlspecialchars($usuario) ?></strong> (<?= htmlspecialchars($rol) ?>)</span>
-      
+  <a href="#contenido" class="visually-hidden-focusable">Saltar al contenido</a>
+
+  <!-- Menú de navegación varia por el rol -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Navegación principal">
+    <div class="container">
+      <a class="navbar-brand" href="panel.php">Soporte Informatico</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Mostrar u ocultar el menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link" href="panel.php">Panel</a></li>
+          <li class="nav-item"><a class="nav-link" href="incidencias.php"><?= $rol === "Administrador" ? "Incidencias" : "Mis incidencias" ?></a></li>
+          <?php if ($rol === "Cliente" || $rol === "Administrador"): ?>
+            <li class="nav-item"><a class="nav-link" href="nueva-incidencia.php">Nueva incidencia</a></li>
+          <?php endif; ?>
+          <?php if ($rol === "Administrador"): ?>
+            <li class="nav-item"><a class="nav-link" href="usuarios.php">Usuarios</a></li>
+          <?php endif; ?>
+        </ul>
+        <span class="navbar-text me-md-3"><?= e($usuario) ?> (<?= e($rol) ?>)</span>
+        <a class="btn btn-outline-light btn-sm" href="logout.php">Cerrar sesión</a>
+      </div>
     </div>
+  </nav>
+
+  <main id="contenido" class="container my-4">
+    <?php mostrar_mensaje(); ?>
 
     <h1 class="h3">Panel</h1>
-    <p>Bienvenido, <?= htmlspecialchars($usuario) ?>. Has iniciado sesión como <strong><?= htmlspecialchars($rol) ?></strong>.</p>
+    <p>Bienvenido, <?= e($usuario) ?>. Has iniciado sesión como <strong><?= e($rol) ?></strong>.</p>
 
-    <div class="list-group mb-3">
-      <?php foreach ($menu as $clave => $titulo): ?>
-        <a href="panel.php?seccion=<?= $clave ?>" class="list-group-item list-group-item-action"><?= $titulo ?></a>
+    <h2 class="h5">Resumen de incidencias</h2>
+    <div class="row g-3 mb-4">
+      <?php foreach ($contador as $estado => $cantidad): ?>
+        <div class="col-6 col-md-3">
+          <div class="card text-center">
+            <div class="card-body">
+              <p class="display-6 mb-0"><?= $cantidad ?></p>
+              <span class="badge <?= clase_estado($estado) ?>"><?= e($estado) ?></span>
+            </div>
+          </div>
+        </div>
       <?php endforeach; ?>
     </div>
-    
-    <?php if ($error !== ""): ?>
-      <div class="alert alert-danger"><strong><?= $error ?></strong></div>
-    <?php elseif ($seccion !== null): ?>
-      <div class="card card-body">
-        <h2 class="h5"><?= $seccion["titulo"] ?></h2>
-        <p class="mb-0"><?= $seccion["texto"] ?></p>
-      </div>
-    <?php endif; ?>
-    <br>
-    <a href="logout.php" class="btn btn-secondary ">Cerrar sesión</a>
+
+    <div class="list-group">
+      <a href="incidencias.php" class="list-group-item list-group-item-action">
+        <?= $rol === "Administrador" ? "Ver todas las incidencias" : "Ver mis incidencias" ?>
+      </a>
+      <?php if ($rol === "Cliente" || $rol === "Administrador"): ?>
+        <a href="nueva-incidencia.php" class="list-group-item list-group-item-action">Crear una incidencia nueva</a>
+      <?php endif; ?>
+      <?php if ($rol === "Administrador"): ?>
+        <a href="usuarios.php" class="list-group-item list-group-item-action">Ver usuarios</a>
+      <?php endif; ?>
+    </div>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

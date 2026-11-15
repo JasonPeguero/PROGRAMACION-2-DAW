@@ -1,0 +1,11 @@
+a = 8
+b = 4
+c = 16
+d = 5
+parcial1 = a + b           
+parcial2 = parcial1 ** 2   
+parcial3 = parcial2 - c    
+parcial4 = parcial3 / d     
+parcial5 = 3 * 2           
+R = parcial4 + parcial5
+print("R =", R, type(R))

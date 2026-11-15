@@ -1,0 +1,4 @@
+# Impide abrir el archivo de datos desde el navegador
+<Files "incidencias.json">
+    Require all denied
+</Files>

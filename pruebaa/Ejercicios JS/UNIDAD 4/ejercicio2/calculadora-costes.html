@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ALBOR LOGISTICS - Calculadora de costes</title>
+</head>
+<body>
+  <h1>ALBOR LOGISTICS</h1>
+  <h2>CALCULADORA DE COSTES</h2>
+
+  <p>Distancia (km): <input type="number" id="distancia"></p>
+  <p>Consumo (l/100 km): <input type="number" id="consumo"></p>
+  <p>Precio combustible (€/l): <input type="number" id="precio" step="0.01"></p>
+  <p>Peajes (€): <input type="number" id="peajes" step="0.01"></p>
+  <p>Coste adicional (€): <input type="number" id="adicionales" step="0.01"></p>
+
+  <button id="btnCalcular">Calcular</button>
+
+  <div id="resultado"></div>
+
+  <script src="js/costes.js"></script>
+</body>
+</html>
