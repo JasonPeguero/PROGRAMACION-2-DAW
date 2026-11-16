@@ -14,7 +14,7 @@ function crearMensaje($totalClientes)
     return "No hay clientes registrados.";
 }
 
-function ordenarClientesPorNombre($clientes)
+function ordenarClientes($clientes)
 {
     usort($clientes, function ($a, $b) {
         return strcmp($a["cliente"], $b["cliente"]);

@@ -3,10 +3,17 @@
 require "datos.php";
 require "funciones.php";
 
+// DATOS
 $clientes = obtenerClientes();
+
+// PROCESAMIENTO
 $totalClientes = contarClientes($clientes);
 $mensaje = crearMensaje($totalClientes);
-$clientesOrdenados = ordenarClientesPorNombre($clientes);
+
+// LÓGICA DE NEGOCIO
+$clientesOrdenados = ordenarClientes($clientes);
+
+// HTML
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,37 +28,61 @@ $clientesOrdenados = ordenarClientesPorNombre($clientes);
 
 <h1>Listado de clientes</h1>
 
-<?php if ($totalClientes > 0): ?>
+<div class="mensaje">
+    <?php echo $mensaje; ?>
+</div>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>CLIENTE</th>
-            <th>EMPRESA</th>
-            <th>EMAIL</th>
-        </tr>
+<?php
 
-        <?php foreach ($clientesOrdenados as $cliente): ?>
-            <tr>
-                <td><?= e($cliente["id"]) ?></td>
-                <td><?= e($cliente["cliente"]) ?></td>
-                <td><?= e($cliente["empresa"]) ?></td>
-                <td><?= e($cliente["email"]) ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+if ($totalClientes > 0) {
 
-<?php else: ?>
+    echo "<table>";
 
-    <p>No existen clientes para mostrar.</p>
+    echo "<tr>";
+    echo "<th>ID</th>";
+    echo "<th>CLIENTE</th>";
+    echo "<th>EMPRESA</th>";
+    echo "<th>EMAIL</th>";
+    echo "</tr>";
 
-<?php endif; ?>
+    foreach ($clientesOrdenados as $cliente) {
+
+        echo "<tr>";
+
+        echo "<td>";
+        echo $cliente["id"];
+        echo "</td>";
+
+        echo "<td>";
+        echo $cliente["cliente"];
+        echo "</td>";
+
+        echo "<td>";
+        echo $cliente["empresa"];
+        echo "</td>";
+
+        echo "<td>";
+        echo $cliente["email"];
+        echo "</td>";
+
+        echo "</tr>";
+    }
+
+    echo "</table>";
+
+} else {
+
+    echo "<p>No existen clientes para mostrar.</p>";
+
+}
+
+?>
 
 <br>
 
 <p>
     Total de clientes:
-    <?= e($totalClientes) ?>
+    <?php echo $totalClientes; ?>
 </p>
 
 </body>

@@ -32,9 +32,13 @@ section {
     color: blue;
 }
 
-p.avso {
+p {
     color: rgb(21, 255, 0);
     font-weight: bold;
+}
+
+p{
+    color: aqua;
 }
 
 h1, h2 {
