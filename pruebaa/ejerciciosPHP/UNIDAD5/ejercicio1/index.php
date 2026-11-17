@@ -33,10 +33,10 @@ $clientesOrdenados = ordenarClientesPorNombre($clientes);
 
         <?php foreach ($clientesOrdenados as $cliente): ?>
             <tr>
-                <td><?= e($cliente["id"]) ?></td>
-                <td><?= e($cliente["cliente"]) ?></td>
-                <td><?= e($cliente["empresa"]) ?></td>
-                <td><?= e($cliente["email"]) ?></td>
+                <td><?= $cliente["id"] ?></td>
+                <td><?= $cliente["cliente"] ?></td>
+                <td><?= $cliente["empresa"] ?></td>
+                <td><?= $cliente["email"] ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
@@ -51,7 +51,7 @@ $clientesOrdenados = ordenarClientesPorNombre($clientes);
 
 <p>
     Total de clientes:
-    <?= e($totalClientes) ?>
+    <?= $totalClientes ?>
 </p>
 
 </body>
