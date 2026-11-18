@@ -1,4 +1,7 @@
+
+
 <?php
+
 const ESTADOS = ["Planificado", "En desarrollo", "En pruebas", "Finalizado"];
 
 function obtenerProyecto($id)

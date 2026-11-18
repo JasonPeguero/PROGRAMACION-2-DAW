@@ -34,19 +34,7 @@ $clientesOrdenados = ordenarClientes($clientes);
 
 <?php
 
-<<<<<<< HEAD
 if ($totalClientes > 0) {
-=======
-        <?php foreach ($clientesOrdenados as $cliente): ?>
-            <tr>
-                <td><?= $cliente["id"] ?></td>
-                <td><?= $cliente["cliente"] ?></td>
-                <td><?= $cliente["empresa"] ?></td>
-                <td><?= $cliente["email"] ?></td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
->>>>>>> b0d0b0a7b8cd58a0543de455337a756d514b3d50
 
     echo "<table>";
 
@@ -84,7 +72,7 @@ if ($totalClientes > 0) {
 
 } else {
 
-    echo "<p>No existen clientes para mostrar.</p>";
+    echo "No existen clientes para mostrar.";
 
 }
 
@@ -93,12 +81,8 @@ if ($totalClientes > 0) {
 <br>
 
 <p>
-    Total de clientes:
-<<<<<<< HEAD
-    <?php echo $totalClientes; ?>
-=======
+    Total de clientes
     <?= $totalClientes ?>
->>>>>>> b0d0b0a7b8cd58a0543de455337a756d514b3d50
 </p>
 
 </body>
