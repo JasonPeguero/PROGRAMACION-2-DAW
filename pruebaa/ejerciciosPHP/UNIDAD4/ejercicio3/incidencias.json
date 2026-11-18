@@ -1,0 +1,159 @@
+[
+[
+    {
+        "id": 1,
+        "titulo": "No funciona la impresora de la oficina",
+        "descripcion": "La impresora multifunción no imprime desde esta mañana. Aparece el aviso de error de conexión.",
+        "cliente": "cliente01",
+        "tecnico": "tecnico01",
+        "prioridad": "Media",
+        "estado": "En proceso",
+        "fecha": "2026-11-02 09:30",
+        "observaciones": [
+            "[2026-11-02 11:00] tecnico01: Revisando los drivers y la conexión de red.",
+            "[2026-11-03 10:15] tecnico01: Hay que sustituir el cable de red. Pendiente de pedir."
+        ]
+    },
+    {
+        "id": 2,
+        "titulo": "Sin acceso al correo corporativo",
+        "descripcion": "No puedo iniciar sesión en el correo desde ayer. Me pide la contraseña una y otra vez.",
+        "cliente": "cliente02",
+        "tecnico": "tecnico02",
+        "prioridad": "Alta",
+        "estado": "Pendiente",
+        "fecha": "2026-11-04 16:45",
+        "observaciones": []
+    },
+    {
+        "id": 3,
+        "titulo": "Servidor web caído",
+        "descripcion": "La página web de la empresa no carga y los clientes no pueden hacer pedidos.",
+        "cliente": "cliente01",
+        "tecnico": "",
+        "prioridad": "Crítica",
+        "estado": "Pendiente",
+        "fecha": "2026-11-06 08:10",
+        "observaciones": []
+    },
+    {
+        "id": 4,
+        "titulo": "El ordenador va muy lento",
+        "descripcion": "El equipo tarda más de cinco minutos en arrancar y se queda colgado al abrir programas.",
+        "cliente": "cliente02",
+        "tecnico": "tecnico01",
+        "prioridad": "Baja",
+        "estado": "Resuelta",
+        "fecha": "2026-10-28 12:20",
+        "observaciones": [
+            "[2026-10-29 09:00] tecnico01: Disco casi lleno. Se ha liberado espacio y desinstalado programas antiguos.",
+            "[2026-10-29 09:40] tecnico01: Equipo reiniciado y funcionando con normalidad."
+        ]
+    },
+    {
+        "id": 5,
+        "titulo": "Solicitud de instalación de Office",
+        "descripcion": "Necesito instalar el paquete Office en el portátil nuevo que me han entregado.",
+        "cliente": "cliente01",
+        "tecnico": "tecnico02",
+        "prioridad": "Baja",
+        "estado": "Cerrada",
+        "fecha": "2026-10-20 10:05",
+        "observaciones": [
+            "[2026-10-21 08:50] tecnico02: Instalado y activado con la licencia de la empresa.",
+            "[2026-10-21 12:00] admin: Confirmado por el cliente. Se cierra la incidencia."
+        ]
+    },
+    {
+        "id": 6,
+        "titulo": "La VPN se desconecta cada pocos minutos",
+        "descripcion": "Trabajando desde casa, la conexión VPN se corta cada 10 minutos y pierdo lo que estoy haciendo.",
+        "cliente": "cliente02",
+        "tecnico": "tecnico01",
+        "prioridad": "Alta",
+        "estado": "En proceso",
+        "fecha": "2026-11-05 09:15",
+        "observaciones": [
+            "[2026-11-05 11:30] tecnico01: Probando con otro protocolo en la configuración del cliente VPN."
+        ]
+    },
+    {
+        "id": 7,
+        "titulo": "Pantalla con rayas verticales",
+        "descripcion": "El monitor del puesto 4 muestra rayas verticales de colores desde hace dos días.",
+        "cliente": "cliente01",
+        "tecnico": "tecnico02",
+        "prioridad": "Media",
+        "estado": "Pendiente",
+        "fecha": "2026-11-07 13:40",
+        "observaciones": []
+    },
+    {
+        "id": 8,
+        "titulo": "No puedo acceder a la carpeta compartida",
+        "descripcion": "Al abrir la carpeta de Contabilidad en el servidor me dice que no tengo permisos.",
+        "cliente": "cliente02",
+        "tecnico": "tecnico02",
+        "prioridad": "Media",
+        "estado": "Resuelta",
+        "fecha": "2026-10-30 15:25",
+        "observaciones": [
+            "[2026-10-31 09:10] tecnico02: Faltaba el usuario en el grupo de Contabilidad. Permiso añadido."
+        ]
+    },
+    {
+        "id": 9,
+        "titulo": "Copia de seguridad fallida",
+        "descripcion": "El aviso de la copia de seguridad nocturna indica error desde hace tres días.",
+        "cliente": "cliente01",
+        "tecnico": "tecnico01",
+        "prioridad": "Crítica",
+        "estado": "En proceso",
+        "fecha": "2026-11-06 17:00",
+        "observaciones": [
+            "[2026-11-06 17:30] tecnico01: Comprobando espacio disponible en el disco de destino.",
+            "[2026-11-07 09:00] tecnico01: El disco externo está fallando. Se prepara uno de sustitución."
+        ]
+    },
+    {
+        "id": 10,
+        "titulo": "Alta de un nuevo usuario",
+        "descripcion": "Se incorpora una nueva compañera el lunes y necesita cuenta de correo y acceso al programa de gestión.",
+        "cliente": "cliente02",
+        "tecnico": "",
+        "prioridad": "Media",
+        "estado": "Pendiente",
+        "fecha": "2026-11-07 16:55",
+        "observaciones": []
+    },
+    {
+        "id": 11,
+        "titulo": "Teclado con teclas que no responden",
+        "descripcion": "Varias teclas del portátil dejan de funcionar de forma intermitente (la E y la R sobre todo).",
+        "cliente": "cliente01",
+        "tecnico": "tecnico02",
+        "prioridad": "Baja",
+        "estado": "Cerrada",
+        "fecha": "2026-10-15 11:10",
+        "observaciones": [
+            "[2026-10-16 10:00] tecnico02: Sustituido el teclado por uno nuevo.",
+            "[2026-10-16 10:30] admin: Se cierra la incidencia tras la reparación."
+        ]
+    },
+    {
+        "id": 12,
+        "titulo": "Posible correo de phishing recibido",
+        "descripcion": "He recibido un correo sospechoso que pedía mis datos bancarios y creo que un compañero llegó a pinchar el enlace.",
+        "cliente": "cliente02",
+        "tecnico": "tecnico01",
+        "prioridad": "Crítica",
+        "estado": "Resuelta",
+        "fecha": "2026-11-03 14:05",
+        "observaciones": [
+            "[2026-11-03 14:30] tecnico01: Cambiadas las contraseñas del usuario afectado y revisado el acceso a la cuenta.",
+            "[2026-11-03 16:00] tecnico01: Sin accesos indebidos. Se avisa a toda la plantilla."
+        ]
+    }
+]
+    
+]
