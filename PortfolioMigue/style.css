@@ -17,6 +17,24 @@ footer{
     padding: 15px;
 }
 
+nav > ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+nav li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.logo{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+    text-align: right;
+}
+
+
 #galeria {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -27,13 +45,14 @@ footer{
     display:flex;
     justify-content: space-between;
     align-items: center;
+    max-width: none;
 }
 
-nav > ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+a[href$=".html"]{
+    color: aliceblue;
+    text-decoration: none;
 }
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -64,8 +83,37 @@ nav > ul{
     color: #243447;
 }
 
-.logo{
-    font-size: 25px;
-    font-weight: bold;
-    margin: 0;
+input, textarea{
+    width: 70%;
+    height: 30px;
+    border-radius: 10px;
+    border-color: black;
+}
+
+textarea{
+    min-height: 120px;
+    border-width: 2px;
+}
+
+.btn{
+    padding: 5px;
+    align-self: center;
+    background-color: slategray;
+    color: aliceblue;
+    border-radius: 10px;
+}
+
+.texto-yo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.texto-yo p{
+    margin: 0 15% 0 0;
+}
+
+.texto-yo h2{
+    align-items: center;
+    
 }
