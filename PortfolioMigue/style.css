@@ -4,17 +4,16 @@ body{
 
 }
 
-header{
+header, footer{
+    text-align: center;
     background-color: slategray;
     color: aliceblue;
     padding: 15px;
 }
 
-footer{
-    text-align: center;
-    background-color: slategray;
-    color: aliceblue;
-    padding: 15px;
+h1, h2, h3 {
+font-family: Georgia, "Times New Roman", serif;
+color: #243447;
 }
 
 nav > ul{
